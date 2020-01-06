@@ -8,20 +8,23 @@ $("input[type=checkbox]").change(function(){
 const filterGroups = ["class", "pantheon", "damage_type", "attack_type", "roles"];
 const specialFeatures = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", "Execute", "Stance-Switching"];
 
-$("input[type=checkbox]").change(updateFilter);
-//TODO: Review this!!!!!!!!
-selGods = gods; 
+$("input[type=checkbox]").change(updateFilters);
 
-function updateFilter() {
-    elegibleGods = gods.slice();
+
+function updateFilters() {
+    for (let key in gods) {gods[key].visible = true;}
+
     for (let group of filterGroups) {filterByGroup(group);}
     for (let feature of specialFeatures) {filterByFeature(feature)}
 
-    gods.map(god => god.HTMLElement.classList.add("hidden"));    
-    elegibleGods.map(god => god.HTMLElement.classList.remove("hidden"));
-    
-    //TODO: Review this!!!!!!!!!
-    selGods = elegibleGods; 
+    for (let key in gods) {
+        if (gods[key].visible) {
+            gods[key].HTMLElement.classList.remove("hidden");
+        }
+        else {
+            gods[key].HTMLElement.classList.add("hidden");
+        }
+    }
 }
 
 /**
@@ -41,10 +44,16 @@ function filterByGroup(gName) {
     let selNum = cbxSelecteds.length;
 
     if (selNum != 0 && selNum != totNum) {
-        if (typeof(gods[0][gName]) === "string") {
-            elegibleGods = elegibleGods.filter(god => cbxSelecteds.includes(god[gName]));
-        } else {
-            elegibleGods = elegibleGods.filter(god => cbxSelecteds.some(x => god[gName].includes(x)));
+        for (let key in gods) {
+            if (gods[key][gName] == "string") {
+                if (!cbxSelecteds.includes(gods[key][gName])) {
+                    gods[key].visible = false;
+                }
+            } else {
+                if (!cbxSelecteds.some(x => gods[key][gName].includes(x))) {
+                    gods[key].visible = false;
+                }
+            }
         }
     }
 }
@@ -55,26 +64,25 @@ function filterByGroup(gName) {
  */
 function filterByFeature(fName) {
     let cbx = document.getElementById(fName);
-    if (cbx.checked) {
-        elegibleGods = elegibleGods.filter(god => god["features"].includes(fName));
-    }
-}
 
-function filterSpc(category) {
-    let current = document.getElementById(category);
-    if (current.checked) {
-        selGods = selGods.filter(god => god["special"].includes(category));
+    if (cbx.checked) {
+        for (key in gods) {
+            if (!gods[key].features.includes(fName)) {
+                gods[key].visible = false;
+            }
+        }
     }
 }
 
 function loadGods() {
     let container = document.getElementById('godList');
     container.innerHTML = '';
-    for (let god of gods) {
-        god.HTMLElement = document.createElement("img");
-        god.HTMLElement.src = `images/t_${god.id}_default_icon.png`;
-        god.HTMLElement.id = god.id;
-        container.appendChild(god.HTMLElement)
+    for (let key in gods) {
+        gods[key].HTMLElement = document.createElement("img");
+        gods[key].HTMLElement.src = `images/t_${gods[key].id}_default_icon.png`;
+        gods[key].HTMLElement.id = gods[key].id;
+        gods[key].visible = true;
+        container.appendChild(gods[key].HTMLElement)
     }
 }
 
