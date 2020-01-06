@@ -7,7 +7,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo", "Jungle"],
-		special: ["Execute", "Escape-Engage"]
+		features: ["Execute", "Escape-Engage"]
 	},
 	{
 		name: "Agni",
@@ -17,7 +17,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ah Muzen Cab",
@@ -27,7 +27,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: [""]
+		features: [""]
 	},
 	{	
 		name: "Amaterasu",
@@ -37,7 +37,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ah Puch",
@@ -47,7 +47,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Anhur",
@@ -57,7 +57,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type:["Ranged"],
 		roles: ["ADC"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Anubis",
@@ -67,7 +67,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Ao Kuang",
@@ -77,7 +77,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Execute", "Invisible", "Escape-Engage"]
+		features: ["Execute", "Invisible", "Escape-Engage"]
 	},
 	{
 		name: "Aphrodite",
@@ -87,7 +87,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Support", "Mid", "Solo"],
-		special: ["Healer"]
+		features: ["Healer"]
 	},
 	{
 		name: "Apollo",
@@ -97,7 +97,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Global-Ult", "Escape-Engage"]
+		features: ["Global-Ult", "Escape-Engage"]
 	},
 	{
 		name: "Arachne",
@@ -107,7 +107,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ares",
@@ -117,7 +117,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Artemis",
@@ -127,7 +127,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Artio",
@@ -137,7 +137,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Solo"],
-		special: ["Healer", "Stance-Switching", "Escape-Engage"]
+		features: ["Healer", "Stance-Switching", "Escape-Engage"]
 	},
 	{
 		name: "Athena",
@@ -147,7 +147,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Global-Ult", "Escape-Engage"]
+		features: ["Global-Ult", "Escape-Engage"]
 	},
 	{
 		name: "Awilix",
@@ -157,7 +157,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Bacchus",
@@ -167,7 +167,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Bakasura",
@@ -177,7 +177,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
     {
         name: "Baron Samedi",
@@ -187,7 +187,7 @@ const gods = [
         damage_type: "Magical",
         attack_type: ["Ranged"],
         roles: ["Support", "Mid", "Jungle"],
-        special: ["Healer"]
+        features: ["Healer"]
     },
 	{
 		name: "Bastet",
@@ -197,7 +197,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Assassin"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Bellona",
@@ -207,7 +207,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Warrior"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Cabrakan",
@@ -217,7 +217,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Jungle", "Solo"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Camazotz",
@@ -227,7 +227,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Cerberus",
@@ -237,7 +237,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Cernunnos",
@@ -247,7 +247,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Chaac",
@@ -257,7 +257,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Chang'e",
@@ -267,7 +267,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid", "Solo"],
-		special: ["Healer"]
+		features: ["Healer"]
 	},
 	{
 		name: "Chernobog",
@@ -277,7 +277,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC","Mid"],
-		special: ["Global-Ult", "Escape-Engage"]
+		features: ["Global-Ult", "Escape-Engage"]
 	},
 	{
 		name: "Chiron",
@@ -287,7 +287,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Healer", "Escape-Engage"]
+		features: ["Healer", "Escape-Engage"]
 	},
 	{
 		name: "Chronos",
@@ -297,7 +297,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["ADC","Mid"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Cu Chulainn",
@@ -307,7 +307,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Cupid",
@@ -317,7 +317,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Healer", "Escape-Engage"]
+		features: ["Healer", "Escape-Engage"]
 	},
 	{
 		name: "Da Ji",
@@ -327,7 +327,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Assassin"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Discordia",
@@ -337,7 +337,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Invisible", "Escape-Engage"]
+		features: ["Invisible", "Escape-Engage"]
 	},
 	{
 		name: "Erlang Shen",
@@ -347,7 +347,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Fafnir",
@@ -357,7 +357,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Fenrir",
@@ -367,7 +367,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Freya",
@@ -377,7 +377,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee","Ranged"],
 		roles: ["ADC", "Mid", "Jungle"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Ganesha",
@@ -387,7 +387,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Geb",
@@ -397,7 +397,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Guan Yu",
@@ -407,7 +407,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo", "Support"],
-		special: ["Healer", "Escape-Engage"]
+		features: ["Healer", "Escape-Engage"]
 	},
 	{
 		name: "Hachiman",
@@ -417,7 +417,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Hades",
@@ -427,7 +427,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "He Bo",
@@ -437,7 +437,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid", "Jungle"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Hel",
@@ -447,7 +447,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid", "Solo"],
-		special: ["Healer", "Stance-Switching"]
+		features: ["Healer", "Stance-Switching"]
 	},
 	{
 		name: "Hercules",
@@ -457,7 +457,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo", "Support", "Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Hou Yi",
@@ -467,7 +467,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Hun Batz",
@@ -477,7 +477,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Isis",
@@ -487,7 +487,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Izanami",
@@ -497,7 +497,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Invisible", "Escape-Engage"]
+		features: ["Invisible", "Escape-Engage"]
 	},
 	{
 		name: "Janus",
@@ -507,7 +507,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Global-Ult", "Escape-Engage"]
+		features: ["Global-Ult", "Escape-Engage"]
 	},
 	{
 		name: "Jing Wei",
@@ -517,7 +517,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Kali",
@@ -527,7 +527,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Khepri",
@@ -537,7 +537,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Kukulkan",
@@ -547,7 +547,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Kumbhakarna",
@@ -557,7 +557,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Kuzenbo",
@@ -567,7 +567,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Loki",
@@ -577,7 +577,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle", "Solo"],
-		special: ["Invisible", "Escape-Engage"]
+		features: ["Invisible", "Escape-Engage"]
 	},
 	{
 		name: "Medusa",
@@ -587,7 +587,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC", "Mid"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Mercury",
@@ -597,7 +597,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ne Zha",
@@ -607,7 +607,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Neith",
@@ -617,7 +617,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC", "Mid"],
-		special: ["Global-Ult", "Escape-Engage"]
+		features: ["Global-Ult", "Escape-Engage"]
 	},
 	{
 		name: "Nemesis",
@@ -627,7 +627,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Nike",
@@ -637,7 +637,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Nox",
@@ -647,7 +647,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid", "Support"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Nu Wa",
@@ -657,7 +657,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Global-Ult", "Invisible"]
+		features: ["Global-Ult", "Invisible"]
 	},
 	{
 		name: "Odin",
@@ -667,7 +667,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo", "Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Osiris",
@@ -677,7 +677,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo", "Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Poseidon",
@@ -687,7 +687,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Ra",
@@ -697,7 +697,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Healer"]
+		features: ["Healer"]
 	},
 	{
 		name: "Raijin",
@@ -707,7 +707,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Rama",
@@ -717,7 +717,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ratatoskr",
@@ -727,7 +727,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ravana",
@@ -737,7 +737,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Scylla",
@@ -747,7 +747,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Serqet",
@@ -757,7 +757,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Invisible", "Escape-Engage"]
+		features: ["Invisible", "Escape-Engage"]
 	},
 	{
 		name: "Skadi",
@@ -767,7 +767,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC", "Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Sobek",
@@ -777,7 +777,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Sol",
@@ -787,7 +787,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["ADC", "Mid", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Sun Wukong",
@@ -797,7 +797,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Susano",
@@ -807,7 +807,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Sylvanus",
@@ -817,7 +817,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Support"],
-		special: ["Healer"]
+		features: ["Healer"]
 	},
 	{
 		name: "Terra",
@@ -827,7 +827,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support"],
-		special: ["Healer", "Escape-Engage"]
+		features: ["Healer", "Escape-Engage"]
 	},
 	{
 		name: "Thanatos",
@@ -837,7 +837,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Execute", "Escape-Engage"]
+		features: ["Execute", "Escape-Engage"]
 	},
 	{
 		name: "The Morrigan",
@@ -847,7 +847,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Jungle", "Mid"],
-		special: ["Invisible"]
+		features: ["Invisible"]
 	},
 	{
 		name: "Thor",
@@ -857,7 +857,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Jungle"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Thoth",
@@ -867,7 +867,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Tyr",
@@ -877,7 +877,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage", "Stance-Switching"]
+		features: ["Escape-Engage", "Stance-Switching"]
 	},
 	{
 		name: "Ullr",
@@ -887,7 +887,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged", "Melee"],
 		roles: ["ADC"],
-		special: ["Escape-Engage", "Stance-Switching"]
+		features: ["Escape-Engage", "Stance-Switching"]
 	},
 	{
 		name: "Vamana",
@@ -897,7 +897,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Melee"],
 		roles: ["Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Vulcan",
@@ -907,7 +907,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Xbalanque",
@@ -917,7 +917,7 @@ const gods = [
 		damage_type: "Physical",
 		attack_type: ["Ranged"],
 		roles: ["ADC"],
-		special: ["Global-Ult", "Escape-Engage"]
+		features: ["Global-Ult", "Escape-Engage"]
 	},
 	{
 		name: "Xing Tian",
@@ -927,7 +927,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Solo"],
-		special: ["Escape-Engage"]
+		features: ["Escape-Engage"]
 	},
 	{
 		name: "Ymir",
@@ -937,7 +937,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Melee"],
 		roles: ["Support", "Jungle"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Zeus",
@@ -947,7 +947,7 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid"],
-		special: [""]
+		features: [""]
 	},
 	{
 		name: "Zhong Kui",
@@ -957,6 +957,6 @@ const gods = [
 		damage_type: "Magical",
 		attack_type: ["Ranged"],
 		roles: ["Mid", "Solo"],
-		special: [""]
+		features: [""]
 	}
 ];

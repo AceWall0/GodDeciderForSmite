@@ -1,42 +1,62 @@
-var selGods = gods.slice();
-refreshList();
+loadGods();
 
 // Set up the checkbox groupers.
 $("input[type=checkbox]").change(function(){
     cbGroupHandler(this)
 });
 
-const fCategories = ["class", "pantheon", "damage_type", "attack_type", "roles"];
-const fSpcCategories = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", "Execute", "Stance-Switching"];
+const filterGroups = ["class", "pantheon", "damage_type", "attack_type", "roles"];
+const specialFeatures = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", "Execute", "Stance-Switching"];
 
-//Handles the filter
-$("input[type=checkbox]").change(function(){
-    selGods = [];
-    selGods = gods.slice();
-    
-    for (let i=0, n=fCategories.length; i<n ; i++) filter(fCategories[i]);
-    for (let i=0, n=fSpcCategories.length; i<n ; i++) filterSpc(fSpcCategories[i]);
-    
-    refreshList();
-});
+$("input[type=checkbox]").change(updateFilter);
+//TODO: Review this!!!!!!!!
+selGods = gods; 
 
+function updateFilter() {
+    elegibleGods = gods.slice();
+    for (let group of filterGroups) {filterByGroup(group);}
+    for (let feature of specialFeatures) {filterByFeature(feature)}
 
-function filter(category) {
-    let current = $(`.${category}.child`).get();
-    let totalNum = current.length;
+    gods.map(god => god.HTMLElement.classList.add("hidden"));    
+    elegibleGods.map(god => god.HTMLElement.classList.remove("hidden"));
     
-    let selecteds = [];
-    for (let i in current) if (current[i].checked) selecteds.push(current[i].id);
-    let selectedsNum = selecteds.length;
-    
-    
-    if (selectedsNum != 0 && selectedsNum != totalNum) {
-        if (typeof (selGods[0][category]) === "string") {
-            selGods = selGods.filter(god => selecteds.includes(god[category]));
-        }   
-        else if (typeof(selGods[0][category]) === "object") {
-            selGods = selGods.filter(god => selecteds.some(x => god[category].includes(x)));
+    //TODO: Review this!!!!!!!!!
+    selGods = elegibleGods; 
+}
+
+/**
+ * If the god has ANY matching properties of the selected checkbox in the specified group,
+ * than this god will be elegible to be displayed and rolled.
+ * @param {string} gName Name of the filter group
+ */
+function filterByGroup(gName) {
+    let cbxListFromGroup = $(`.${gName}.child`).get();    
+    let cbxSelecteds = [];
+    for (let cbx of cbxListFromGroup) {
+        if (cbx.checked) {
+            cbxSelecteds.push(cbx.id);
         }
+    }
+    let totNum = cbxListFromGroup.length;
+    let selNum = cbxSelecteds.length;
+
+    if (selNum != 0 && selNum != totNum) {
+        if (typeof(gods[0][gName]) === "string") {
+            elegibleGods = elegibleGods.filter(god => cbxSelecteds.includes(god[gName]));
+        } else {
+            elegibleGods = elegibleGods.filter(god => cbxSelecteds.some(x => god[gName].includes(x)));
+        }
+    }
+}
+
+/**
+ * To a god be elegible to be displayed and rolled, it has to have ALL the features checked.
+ * @param {string} fName The name of the feature.
+ */
+function filterByFeature(fName) {
+    let cbx = document.getElementById(fName);
+    if (cbx.checked) {
+        elegibleGods = elegibleGods.filter(god => god["features"].includes(fName));
     }
 }
 
@@ -47,16 +67,17 @@ function filterSpc(category) {
     }
 }
 
-function refreshList() {
-	let container = document.getElementById('godList');
-	container.innerHTML = '';    
-    for (let i in selGods) {
-        var node = document.createElement("img");
-		node.src = `images/t_${selGods[i].id}_default_icon.png`;
-		container.appendChild(node);
-    }    
-	document.getElementById('numberX').innerHTML = selGods.length + "/" + gods.length;
+function loadGods() {
+    let container = document.getElementById('godList');
+    container.innerHTML = '';
+    for (let god of gods) {
+        god.HTMLElement = document.createElement("img");
+        god.HTMLElement.src = `images/t_${god.id}_default_icon.png`;
+        god.HTMLElement.id = god.id;
+        container.appendChild(god.HTMLElement)
+    }
 }
+
 function roll() {
 	let x = Math.floor(Math.random() * selGods.length);
 	$('#godName').text(selGods[x].name);

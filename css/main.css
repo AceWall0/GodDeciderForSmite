@@ -247,6 +247,9 @@
     background: url("../images/button_pressed.png");
     background-size: 100% 100%;
   }
+  .hidden {
+    display: none;
+  }
   /*******close menu********/
   .closed-aside {
     -ms-grid-columns: 0fr 1fr minmax(0rem, 9rem) 1fr;
