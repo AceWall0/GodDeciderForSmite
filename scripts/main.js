@@ -1,13 +1,14 @@
 var selGods = gods.slice();
 refreshList();
 
-//"Select all" checkboxes
-$("input[type=checkbox]").change(function(){selectAll(this)});
+// Set up the checkbox groupers.
+$("input[type=checkbox]").change(function(){
+    cbGroupHandler(this)
+});
 
-//Create filter rules to quick iterate between them
 const fCategories = ["class", "pantheon", "damage_type", "attack_type", "roles"];
-const fSpcCategories = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", 
-                        "Execute", "Stance-Switching"];
+const fSpcCategories = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", "Execute", "Stance-Switching"];
+
 //Handles the filter
 $("input[type=checkbox]").change(function(){
     selGods = [];
@@ -68,20 +69,25 @@ function toggleAside() {
 	x.toggle("open-aside");
 }
 
-function selectAll(x) {
+/**
+ * Handles the checkbox that control the group. If clicked, it sends command to all children to be 
+ * selected or deselected. And if a child is clicked, the father may be in the indetarminate state. 
+ * @param {input[type=checkbox]} x 
+ */
+function cbGroupHandler(x) {
     let list = x.classList;
-    let group = list[0];
+    let groupName = list[0];
     
     if (list.contains("father")) {
-        let children = document.getElementsByClassName(group + " child");
+        let children = document.getElementsByClassName(groupName + " child");
         for (let i = children.length - 1; i >= 0; i--) {
             children[i].checked = x.checked;
         }
     }
     else if (list.contains("child")) {
-        let totalNum = document.getElementsByClassName(group + " child").length;
-        let selNum = document.querySelectorAll(`.${group}.child:checked`).length;
-        let a = document.querySelector(`.${group}.father`);
+        let totalNum = document.getElementsByClassName(groupName + " child").length;
+        let selNum = document.querySelectorAll(`.${groupName}.child:checked`).length;
+        let a = document.querySelector(`.${groupName}.father`);
         
         if (selNum === 0) {
             a.checked = false;
