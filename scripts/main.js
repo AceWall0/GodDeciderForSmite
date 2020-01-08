@@ -1,13 +1,15 @@
 loadGods();
 
-// Set up the checkbox groupers.
-$("input[type=checkbox]").change(function(){
-    cbGroupHandler(this)
-});
+
+$("input[type=checkbox]").change(function(){cbGroupHandler(this)}); // Set up the checkbox groupers.
+$(".godFigure").click(function(){toggleGod(this)});                 // Makes the gods toggleable.
 
 const filterGroups = ["class", "pantheon", "damage_type", "attack_type", "roles"];
 const specialFeatures = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", "Execute", "Stance-Switching"];
+const godIds = Object.keys(gods);
+let selectedGods = godIds;
 
+updateSelectedGodsList();
 $("input[type=checkbox]").change(updateFilters);
 
 
@@ -20,11 +22,11 @@ function updateFilters() {
     for (let key in gods) {
         if (gods[key].visible) {
             gods[key].HTMLElement.classList.remove("hidden");
-        }
-        else {
+        } else {
             gods[key].HTMLElement.classList.add("hidden");
         }
     }
+    updateSelectedGodsList();
 }
 
 /**
@@ -78,25 +80,47 @@ function loadGods() {
     let container = document.getElementById('godList');
     container.innerHTML = '';
     for (let key in gods) {
-        gods[key].HTMLElement = document.createElement("img");
-        gods[key].HTMLElement.src = `images/t_${gods[key].id}_default_icon.png`;
-        gods[key].HTMLElement.id = gods[key].id;
+        let figure = document.createElement("figure");
+        figure.id = gods[key].id;
+        figure.classList.add("godFigure");
+
+        let img = document.createElement("img");
+        img.src = `images/t_${gods[key].id}_default_icon.png`;
+        img.classList.add("godImg");
+
+        figure.appendChild(img);
+        gods[key].HTMLElement = figure;
         gods[key].visible = true;
-        container.appendChild(gods[key].HTMLElement)
+        gods[key].selected = true;
+        container.appendChild(figure);
     }
 }
 
 function roll() {
-	let x = Math.floor(Math.random() * selGods.length);
-	$('#godName').text(selGods[x].name);
-	$('#godDescription').text(selGods[x].pantheon + " " + selGods[x].class);
-    $("#icoBorder").css("background-image", `url("images/t_${selGods[x].id}_default_icon.png")`);
+    let x = Math.floor(Math.random() * selectedGods.length);
+    let id = selectedGods[x];
+	$('#godName').text(gods[id].name);
+	$('#godDescription').text(`${gods[id].pantheon} ${gods[id].class}`);
+    $("#icoBorder").css("background-image", `url("images/t_${id}_default_icon.png")`);
 }
+
 function toggleAside() {
 	let x = document.getElementById("gridContainer").classList;
 	x.toggle("closed-aside");
 	x.toggle("open-aside");
 }
+
+function toggleGod(god) {
+    let off = god.classList.toggle("deselected");
+    gods[god.id].selected = !off;
+    updateSelectedGodsList();
+}
+
+function updateSelectedGodsList() {
+    selectedGods = Object.keys(gods).filter(id => gods[id].visible && gods[id].selected);
+    document.getElementById("numberX").innerHTML = `${selectedGods.length}/${godIds.length}`
+}
+
 
 /**
  * Handles the checkbox that control the group. If clicked, it sends command to all children to be 
