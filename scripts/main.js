@@ -1,32 +1,31 @@
-loadGods();
+loadGods()
 
+$('input[type=checkbox]').change(function(){cbxGroupHandler(this)}) // Set up the checkbox groupers.
+$('.godFigure').click(function(){toggleGod(this)})                 // Makes the gods toggleable.
 
-$("input[type=checkbox]").change(function(){cbGroupHandler(this)}); // Set up the checkbox groupers.
-$(".godFigure").click(function(){toggleGod(this)});                 // Makes the gods toggleable.
+const filterGroups = ['class', 'pantheon', 'damage_type', 'attack_type', 'roles']
+const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switching']
+const godIds = Object.keys(gods)
+let selectedGods = godIds
 
-const filterGroups = ["class", "pantheon", "damage_type", "attack_type", "roles"];
-const specialFeatures = ["Healer", "Escape-Engage", "Global-Ult", "Invisible", "Execute", "Stance-Switching"];
-const godIds = Object.keys(gods);
-let selectedGods = godIds;
-
-updateSelectedGodsList();
-$("input[type=checkbox]").change(updateFilters);
+updateSelectedGodsList()
+$('input[type=checkbox]').change(updateFilters)
 
 
 function updateFilters() {
-    for (let key in gods) {gods[key].visible = true;}
+    for (let key in gods) {gods[key].visible = true}
 
-    for (let group of filterGroups) {filterByGroup(group);}
+    for (let group of filterGroups) {filterByGroup(group)}
     for (let feature of specialFeatures) {filterByFeature(feature)}
 
     for (let key in gods) {
         if (gods[key].visible) {
-            gods[key].HTMLElement.classList.remove("hidden");
+            gods[key].HTMLElement.classList.remove('hidden')
         } else {
-            gods[key].HTMLElement.classList.add("hidden");
+            gods[key].HTMLElement.classList.add('hidden')
         }
     }
-    updateSelectedGodsList();
+    updateSelectedGodsList()
 }
 
 /**
@@ -35,25 +34,25 @@ function updateFilters() {
  * @param {string} gName Name of the filter group
  */
 function filterByGroup(gName) {
-    let cbxListFromGroup = $(`.${gName}.child`).get();    
-    let cbxSelecteds = [];
+    let cbxListFromGroup = $(`.${gName}.child`).get()    
+    let cbxSelecteds = []
     for (let cbx of cbxListFromGroup) {
         if (cbx.checked) {
-            cbxSelecteds.push(cbx.id);
+            cbxSelecteds.push(cbx.id)
         }
     }
-    let totNum = cbxListFromGroup.length;
-    let selNum = cbxSelecteds.length;
+    let totNum = cbxListFromGroup.length
+    let selNum = cbxSelecteds.length
 
     if (selNum != 0 && selNum != totNum) {
         for (let key in gods) {
-            if (gods[key][gName] == "string") {
+            if (gods[key][gName] == 'string') {
                 if (!cbxSelecteds.includes(gods[key][gName])) {
-                    gods[key].visible = false;
+                    gods[key].visible = false
                 }
             } else {
                 if (!cbxSelecteds.some(x => gods[key][gName].includes(x))) {
-                    gods[key].visible = false;
+                    gods[key].visible = false
                 }
             }
         }
@@ -65,57 +64,92 @@ function filterByGroup(gName) {
  * @param {string} fName The name of the feature.
  */
 function filterByFeature(fName) {
-    let cbx = document.getElementById(fName);
+    let cbx = document.getElementById(fName)
 
     if (cbx.checked) {
         for (key in gods) {
             if (!gods[key].features.includes(fName)) {
-                gods[key].visible = false;
+                gods[key].visible = false
             }
         }
     }
 }
 
 function loadGods() {
-    let container = document.getElementById('godList');
-    container.innerHTML = '';
+    let container = document.getElementById('godList')
+    container.innerHTML = ''
     for (let key in gods) {
-        let figure = document.createElement("figure");
-        figure.id = gods[key].id;
-        figure.classList.add("godFigure");
+        let figure = document.createElement('figure')
+        figure.id = gods[key].id
+        figure.classList.add('godFigure')
 
-        let img = document.createElement("img");
-        img.src = `images/t_${gods[key].id}_default_icon.png`;
-        img.classList.add("godImg");
+        let img = document.createElement('img')
+        img.src = `images/t_${gods[key].id}_default_icon.png`
+        img.classList.add('godImg')
 
-        figure.appendChild(img);
-        gods[key].HTMLElement = figure;
-        gods[key].visible = true;
-        gods[key].selected = true;
-        container.appendChild(figure);
+        figure.appendChild(img)
+        gods[key].HTMLElement = figure
+        gods[key].visible = true
+        gods[key].selected = true
+        container.appendChild(figure)
     }
 }
 
 function roll() {
-    let x = Math.floor(Math.random() * selectedGods.length);
-    let id = selectedGods[x];
-	$('#godName').text(gods[id].name);
-	$('#godDescription').text(`${gods[id].pantheon} ${gods[id].class}`);
-    $("#icoBorder").css("background-image", `url("images/t_${id}_default_icon.png")`);
+    let x = Math.floor(Math.random() * selectedGods.length)
+    let id = selectedGods[x]
+	$('#godName').text(gods[id].name)
+	$('#godDescription').text(`${gods[id].pantheon} ${gods[id].class}`)
+    $('#icoBorder').css('background-image', `url("images/t_${id}_default_icon.png")`)
 }
 
 function toggleAside() {
-	let x = document.getElementById("gridContainer").classList;
-	x.toggle("closed-aside");
-	x.toggle("open-aside");
+	let x = document.getElementById('gridContainer').classList
+	x.toggle('closed-aside')
+	x.toggle('open-aside')
 }
 
 function toggleGod(god) {
-    let off = god.classList.toggle("deselected");
-    gods[god.id].selected = !off;
-    updateSelectedGodsList();
+    let off = god.classList.toggle('deselected')
+    gods[god.id].selected = !off
+    updateSelectedGodsList()
+    
+    // Updates the state of the "All" checkbox.
+    let count = 0
+    const godList = Object.values(gods)
+    const cbx = document.getElementById('selectAllCbx')
+
+    godList.forEach(e => {if (e.selected) count++});
+    if (count === godList.length) {
+        cbx.checked = true
+        cbx.indeterminate = false
+    } else if (count === 0) {
+        cbx.checked = false
+        cbx.indeterminate = false
+    } else {
+        cbx.checked = false
+        cbx.indeterminate = true
+    }
 }
 
+function toggleAllGods(cbx) {
+    if (cbx.checked) {
+        for (key in gods) {
+            gods[key].HTMLElement.classList.remove('deselected')
+            gods[key].selected = true
+        }
+    } else {
+        for (key in gods) {
+            gods[key].HTMLElement.classList.add('deselected')
+            gods[key].selected = false
+        }
+    }
+    updateSelectedGodsList()
+}
+
+/**
+ * Called everytime there is a change in the filter or selection of the gods.
+ */
 function updateSelectedGodsList() {
     selectedGods = Object.keys(gods).filter(id => gods[id].visible && gods[id].selected);
     document.getElementById("numberX").innerHTML = `${selectedGods.length}/${godIds.length}`
@@ -127,32 +161,32 @@ function updateSelectedGodsList() {
  * selected or deselected. And if a child is clicked, the father may be in the indetarminate state. 
  * @param {input[type=checkbox]} x 
  */
-function cbGroupHandler(x) {
-    let list = x.classList;
-    let groupName = list[0];
+function cbxGroupHandler(x) {
+    let list = x.classList
+    let groupName = list[0]
     
-    if (list.contains("father")) {
-        let children = document.getElementsByClassName(groupName + " child");
+    if (list.contains('father')) {
+        let children = document.getElementsByClassName(groupName + ' child')
         for (let i = children.length - 1; i >= 0; i--) {
-            children[i].checked = x.checked;
+            children[i].checked = x.checked
         }
     }
-    else if (list.contains("child")) {
-        let totalNum = document.getElementsByClassName(groupName + " child").length;
-        let selNum = document.querySelectorAll(`.${groupName}.child:checked`).length;
-        let a = document.querySelector(`.${groupName}.father`);
+    else if (list.contains('child')) {
+        let totalNum = document.getElementsByClassName(groupName + ' child').length
+        let selNum = document.querySelectorAll(`.${groupName}.child:checked`).length
+        let a = document.querySelector(`.${groupName}.father`)
         
         if (selNum === 0) {
-            a.checked = false;
-            a.indeterminate = false;
+            a.checked = false
+            a.indeterminate = false
         }
         else if (selNum === totalNum) {
-            a.checked = true;
-            a.indeterminate = false;
+            a.checked = true
+            a.indeterminate = false
         }
         else {
-            a.checked = false; 
-            a.indeterminate = true;
+            a.checked = false 
+            a.indeterminate = true
         }
     }
 }

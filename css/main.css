@@ -121,7 +121,7 @@
     margin-top: 0.2rem;
     font-variant: small-caps;
   }
-  /********* Aside **********/
+  /*------------- Aside ------------*/
   aside {
     grid-row: 1 / -1;
     padding: 0.5rem 0 0.5rem 0.5rem;
@@ -139,6 +139,9 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   aside span {
     padding-left: 0.4rem;
@@ -166,32 +169,7 @@
   .filterGroups label:nth-child(1) {
     border-bottom: rgba(255, 255, 255, 0.1) 0.1em solid;
   }
-  input[type="checkbox"] {
-    visibility: hidden;
-    position: relative;
-  }
-  input[type="checkbox"]::after {
-    content: '';
-    width: 0.9em;
-    height: 0.9em;
-    border: #77FFFF 0.11em solid;
-    border-radius: 20%;
-    visibility: initial;
-    position: absolute;
-  }
-  input[type="checkbox"]:checked::after {
-    background: radial-gradient(white, #AAFFFF 60%, transparent);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80% 80%;
-  }
-  input[type="checkbox"]:indeterminate::after {
-    background: radial-gradient(white, #AAFFFF 60%, transparent);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80% 20%;
-  }
-  /*********God list**********/
+  /*----------- Section -------------*/
   section {
     grid-row: 2 / -1;
     grid-column: 2 / -1;
@@ -203,8 +181,25 @@
         grid-template-rows: auto 1fr;
   }
   .selectedNumber {
-    margin-bottom: 0.5rem;
-    text-align: center;
+    margin-bottom: 0.1rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1.2em 1.2em;
+        grid-template-rows: 1.2em 1.2em;
+  }
+  .selectedNumber div {
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  .selectedNumber label {
+    justify-self: end;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 0.9em;
   }
   #godList {
     background: rgba(0, 0, 0, 0.5);
@@ -241,8 +236,9 @@
     width: 100%;
     z-index: -1;
   }
-  .deselected::after {
-    background-color: rgba(0, 0, 0, 0.75);
+  .deselected {
+    -webkit-filter: grayscale(100%) brightness(50%);
+            filter: grayscale(100%) brightness(50%);
   }
   .hidden {
     display: none;
@@ -275,7 +271,7 @@
     background: url("../images/button_pressed.png");
     background-size: 100% 100%;
   }
-  /*******close menu********/
+  /*--------------- closed menu --------------*/
   .closed-aside {
     -ms-grid-columns: 0fr 1fr minmax(0rem, 9rem) 1fr;
         grid-template-columns: 0fr 1fr minmax(0rem, 9rem) 1fr;
@@ -299,6 +295,33 @@
   .closed-aside #godList {
     -ms-grid-columns: (minmax(4rem, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+  }
+  /*--------------- Checkbox ---------------- */
+  input[type="checkbox"] {
+    visibility: hidden;
+    position: relative;
+    font-size: 1em;
+  }
+  input[type="checkbox"]::after {
+    content: '';
+    width: 0.75em;
+    height: 0.75em;
+    border: #77FFFF 1px solid;
+    border-radius: 20%;
+    visibility: initial;
+    position: absolute;
+  }
+  input[type="checkbox"]:checked::after {
+    background: radial-gradient(white, #AAFFFF 60%, transparent);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 80%;
+  }
+  input[type="checkbox"]:indeterminate::after {
+    background: radial-gradient(white, #AAFFFF 60%, transparent);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 20%;
   }
   @media (max-width: 340px) {
     .open-aside header {
