@@ -210,6 +210,9 @@
         grid-template-columns: repeat(auto-fill, minmax(3.5rem, 1fr));
     grid-auto-rows: -webkit-min-content;
     grid-auto-rows: min-content;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
   }
   #godList::after {
     content: '';
@@ -315,7 +318,7 @@
     background: radial-gradient(white, #AAFFFF 60%, transparent);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80% 80%;
+    background-size: 83% 83%;
   }
   input[type="checkbox"]:indeterminate::after {
     background: radial-gradient(white, #AAFFFF 60%, transparent);
@@ -323,7 +326,7 @@
     background-position: center;
     background-size: 80% 20%;
   }
-  @media (max-width: 340px) {
+  @media (max-width: 21.25rem) {
     .open-aside header {
       -ms-grid-rows: min-content 3rem 2rem 2rem;
           grid-template-rows: -webkit-min-content 3rem 2rem 2rem;

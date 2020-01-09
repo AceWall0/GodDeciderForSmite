@@ -1,7 +1,7 @@
 loadGods()
 
 $('input[type=checkbox]').change(function(){cbxGroupHandler(this)}) // Set up the checkbox groupers.
-$('.godFigure').click(function(){toggleGod(this)})                 // Makes the gods toggleable.
+$('.godFigure').click(function(){toggleGod(this)})                  // Makes the gods toggleable.
 
 const filterGroups = ['class', 'pantheon', 'damage_type', 'attack_type', 'roles']
 const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switching']
