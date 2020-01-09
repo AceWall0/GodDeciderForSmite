@@ -116,6 +116,7 @@
 		grid-row: 1 / -1;
 		padding: 0.5rem 0 0.5rem 0.5rem;
 		width: 10rem;
+		height: inherit;
 	}
 
 	aside h3 {
@@ -253,7 +254,6 @@
 		justify-content: center;
 		font-variant: small-caps;
 		font-size: 1.4rem;
-
 	}
 	.btnRoll:active {
 		background: url("../images/button_pressed.png");
