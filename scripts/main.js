@@ -1,18 +1,25 @@
-loadGods()
-
-$('input[type=checkbox]').change(function(){cbxGroupHandler(this)}) // Set up the checkbox groupers.
-$('.godFigure').click(function(){toggleGod(this)})                  // Makes the gods toggleable.
-
 const filterGroups = ['class', 'pantheon', 'damage_type', 'attack_type', 'roles']
 const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switching']
 const godIds = Object.keys(gods)
 let selectedGods = godIds
 
-updateSelectedGodsList()
-$('input[type=checkbox]').change(updateFilters)
+$('#godList').ready(loadGods)
+$(document).ready(main)
 
 
-function updateFilters() {
+function main() {
+    $('input[type=checkbox]').change(function(){cbxGroupHandler(this)}) // Set up the checkbox groupers.
+    $('.godFigure').click(function(){toggleGod(this)})                  // Makes the gods toggleable.
+    
+    updateSelectedGodsList()
+    $('input[type=checkbox]').change(applyFilters)
+}
+
+
+/**
+ * Look for any filter that are checked and apply them, making the gods hidden or unhidden.
+ */
+function applyFilters() {
     for (let key in gods) {gods[key].visible = true}
 
     for (let group of filterGroups) {filterByGroup(group)}
@@ -27,6 +34,7 @@ function updateFilters() {
     }
     updateSelectedGodsList()
 }
+
 
 /**
  * If the god has ANY matching properties of the selected checkbox in the specified group,
@@ -59,6 +67,7 @@ function filterByGroup(gName) {
     }
 }
 
+
 /**
  * To a god be elegible to be displayed and rolled, it has to have ALL the features checked.
  * @param {string} fName The name of the feature.
@@ -75,6 +84,10 @@ function filterByFeature(fName) {
     }
 }
 
+/**
+ * Load all the gods from the gods.js file on the html page, creating them elements to be displayed,
+ * binding them events and defining if the god is selected individually or if it is hidden by the filters.
+ */
 function loadGods() {
     let container = document.getElementById('godList')
     container.innerHTML = ''
@@ -95,6 +108,11 @@ function loadGods() {
     }
 }
 
+
+/**
+ * Takes one random god from the selectedGods list and displays to the user the icon, name and
+ * description of the god selected.
+ */
 function roll() {
     let x = Math.floor(Math.random() * selectedGods.length)
     let id = selectedGods[x]
@@ -103,12 +121,21 @@ function roll() {
     $('#icoBorder').css('background-image', `url("images/t_${id}_default_icon.png")`)
 }
 
+
+/**
+ * Toggles the visibility of the filters panel.
+ */
 function toggleAside() {
 	let x = document.getElementById('gridContainer').classList
 	x.toggle('closed-aside')
 	x.toggle('open-aside')
 }
 
+
+/**
+ * Toggle the "selected" property of a god and the "deselected" class for CSS styling.
+ * @param {HTMLElement} god An element bound to a god in the gods.js file.
+ */
 function toggleGod(god) {
     let off = god.classList.toggle('deselected')
     gods[god.id].selected = !off
@@ -132,6 +159,11 @@ function toggleGod(god) {
     }
 }
 
+
+/**
+ * Handles the checkbox that select and unselect all gods at once.
+ * @param {HTMLInputElement} cbx The checkbox element to control it.
+ */
 function toggleAllGods(cbx) {
     if (cbx.checked) {
         for (key in gods) {
@@ -149,6 +181,7 @@ function toggleAllGods(cbx) {
 
 /**
  * Called everytime there is a change in the filter or selection of the gods.
+ * It will update which gods can be rolled based if it is displayed and selected.
  */
 function updateSelectedGodsList() {
     selectedGods = Object.keys(gods).filter(id => gods[id].visible && gods[id].selected);
@@ -159,7 +192,7 @@ function updateSelectedGodsList() {
 /**
  * Handles the checkbox that control the group. If clicked, it sends command to all children to be 
  * selected or deselected. And if a child is clicked, the father may be in the indetarminate state. 
- * @param {input[type=checkbox]} x 
+ * @param {HTMLImageElement} x 
  */
 function cbxGroupHandler(x) {
     let list = x.classList
