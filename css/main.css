@@ -3,25 +3,36 @@
   --darkColor: rgba(0, 0, 0, 0.2);
 }
 
+body {
+  margin: 0;
+  background: url("../images/bg2.jpg") #505050;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: sans-serif;
+  color: white;
+  height: 100vh;
+}
+
+.fallback {
+  margin: 2em;
+  text-align: center;
+}
+
+header, section, aside, .btnRoll {
+  display: none;
+}
+
 @supports (display: grid) {
-  .outdated {
+  .fallback {
     display: none;
   }
   * {
-    border-collapse: separate;
     box-sizing: border-box;
     user-select: none;
   }
   body {
-    margin: 0;
-    background: url("../images/bg2.jpg") #505050;
-    background-blend-mode: multiply;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: sans-serif;
-    color: white;
-    height: 100vh;
     display: grid;
     grid-template-columns: auto minmax(1rem, 1fr) minmax(0rem, 9rem) minmax(1rem, 1fr);
     grid-template-rows: auto 1fr 4.5rem;
@@ -85,6 +96,7 @@
   }
   /*------------- Aside ------------*/
   aside {
+    display: block;
     grid-row: 1 / -1;
     padding: 0.5rem 0 0.5rem 0.5rem;
     height: inherit;
@@ -192,7 +204,7 @@
     z-index: 1;
     width: 100%;
     height: 2.5rem;
-    background: url("../images/button_normal.png");
+    background-image: url("../images/button_normal.png");
     background-size: 100% 100%;
     display: flex;
     align-items: center;
@@ -201,8 +213,7 @@
     font-size: 1.4rem;
   }
   .btnRoll:active {
-    background: url("../images/button_pressed.png");
-    background-size: 100% 100%;
+    background-image: url("../images/button_pressed.png");
   }
   /*--------------- closed aside --------------*/
   .closed-aside {
@@ -267,15 +278,5 @@
     .open-aside .selectedNumber {
       font-size: 0.8rem;
     }
-  }
-}
-
-@supports not (display: grid) {
-  .gridContainer {
-    font-family: sans-serif;
-    display: none;
-  }
-  .outdated {
-    display: block;
   }
 }
