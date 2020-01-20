@@ -21,21 +21,18 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		font-family: sans-serif;
-		height: 100vh;
 		color: white;
-	}
-
-	.gridContainer {
-		display: grid;
 		height: 100vh;
+
+		display: grid;
 		grid-template-columns: auto minmax(1rem, 1fr) minmax(0rem, 9rem) minmax(1rem, 1fr);
 		grid-template-rows: auto 1fr 4.5rem;
 		grid-gap: 0.2rem;
-        position: relative;
-	}
-    
-	.gridContainer > * {
-		background: var(--primaryColor);
+		position: relative;
+		
+		& > * {
+			background: var(--primaryColor);
+		}
 	}
 
 

@@ -126,7 +126,7 @@ function roll() {
  * Toggles the visibility of the filters panel.
  */
 function toggleAside() {
-	let x = document.getElementById('gridContainer').classList
+	let x = document.getElementsByTagName('body')[0].classList
 	x.toggle('closed-aside')
 	x.toggle('open-aside')
 }
@@ -178,6 +178,7 @@ function toggleAllGods(cbx) {
     }
     updateSelectedGodsList()
 }
+
 
 /**
  * Called everytime there is a change in the filter or selection of the gods.

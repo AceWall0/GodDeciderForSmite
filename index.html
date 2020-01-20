@@ -4,95 +4,96 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>God Decider for Smite</title>
-        <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     </head>
-    <body>
-        <div class="gridContainer open-aside" id="gridContainer">
-	    	<header>
-	    		<svg onclick="toggleAside()" viewBox="0 0 24 24">
-	    			<path d="m10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="#FFF"/>
-	    		</svg>
+    <body class="open-aside">
+        
+		<header>
+			<svg onclick="toggleAside()" viewBox="0 0 24 24">
+				<path d="m10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="#FFF"/>
+			</svg>
 
-				<img id="icoBorder" src="images/prestige_border.png">	    		
+			<img id="icoBorder" src="images/prestige_border.png">	    		
 
-	    		<div id="godName">?</div>
-	    		<div id="godDescription">---</div>
-	    		<div class="line"></div>
-	    	</header>
+			<div id="godName">?</div>
+			<div id="godDescription">---</div>
+			<div class="line"></div>
+		</header>
 
-			<aside>
-				<h2>Filters</h2>
-				<div id="filter" class="scroll filter-container">
-					<div class="filterGroups">
-						<label><h3>Class</h3>		
-							<input class="class father" type="checkbox">
-						</label>
-						<label><span>Hunter</span>	<input class="class child" type="checkbox" id="Hunter"></label>
-						<label><span>Guardian</span><input class="class child" type="checkbox" id="Guardian"></label>
-						<label><span>Mage</span>	<input class="class child" type="checkbox" id="Mage"></label>
-						<label><span>Assassin</span><input class="class child" type="checkbox" id="Assassin"></label>
-						<label><span>Warrior</span>	<input class="class child" type="checkbox" id="Warrior"></label>
-					</div>				
-                    <div class="filterGroups">
-                        <label><h3>Roles</h3>		
-                            <input class="roles father" type="checkbox">
-                        </label>
-                        <label><span>ADC</span>		<input class="roles child" type="checkbox" id="ADC"></label>
-                        <label><span>Support</span>	<input class="roles child" type="checkbox" id="Support"></label>
-                        <label><span>Mid</span>		<input class="roles child" type="checkbox" id="Mid"></label>
-                        <label><span>Jungle</span>	<input class="roles child" type="checkbox" id="Jungle"></label>
-                        <label><span>Solo</span>	<input class="roles child" type="checkbox" id="Solo"></label>
-                    </div>
-					<div class="filterGroups">
-						<label><h3>Type</h3>		
-							<input class="type father" type="checkbox">
-						</label>
-						<label><span>Physical</span><input class="type damage_type child" type="checkbox" id="Physical"></label>
-						<label><span>Magical</span>	<input class="type damage_type child" type="checkbox" id="Magical"></label>
-						<label><span>Melee</span>	<input class="type attack_type child" type="checkbox" id="Melee"></label>
-						<label><span>Ranged</span>	<input class="type attack_type child" type="checkbox" id="Ranged"></label>
-					</div>
-					<div class="filterGroups">
-						<label><h3>Features</h3>				
-							<input class="features father" type="checkbox">
-						</label>
-						<label><span>Healer</span>			<input class="features child" type="checkbox" id="Healer"></label>
-						<label><span>Escape/Engage</span>	<input class="features child" type="checkbox" id="Escape-Engage"></label>
-						<label><span>Global Ult</span>		<input class="features child" type="checkbox" id="Global-Ult"></label>
-						<label><span>Invisible</span>		<input class="features child" type="checkbox" id="Invisible"></label>
-						<label><span>Execute</span>			<input class="features child" type="checkbox" id="Execute"></label>
-						<label><span>Stance-Switching</span><input class="features child" type="checkbox" id="Stance-Switching"></label>
-					</div> 
-                    <div class="filterGroups">
-                        <label><h3>Pantheon</h3>	
-                            <input class="pantheon father" type="checkbox">
-                        </label>
-                        <label><span>Celtic</span>	<input class="pantheon child" type="checkbox" id="Celtic"></label>
-                        <label><span>Chinese</span>	<input class="pantheon child" type="checkbox" id="Chinese"></label>
-                        <label><span>Egyptian</span><input class="pantheon child" type="checkbox" id="Egyptian"></label>
-                        <label><span>Greek</span>	<input class="pantheon child" type="checkbox" id="Greek"></label>
-                        <label><span>Hindu</span>	<input class="pantheon child" type="checkbox" id="Hindu"></label>
-                        <label><span>Japanese</span><input class="pantheon child" type="checkbox" id="Japanese"></label>
-                        <label><span>Mayan</span>	<input class="pantheon child" type="checkbox" id="Mayan"></label>
-                        <label><span>Norse</span>	<input class="pantheon child" type="checkbox" id="Norse"></label>
-                        <label><span>Roman</span>	<input class="pantheon child" type="checkbox" id="Roman"></label>
-                        <label><span>Slavic</span>	<input class="pantheon child" type="checkbox" id="Slavic"></label>
-                        <label><span>Voodoo</span>	<input class="pantheon child" type="checkbox" id="Voodoo"></label>
-                    </div>
-			</div>	
-			</aside>
-			
-			<section>
-				<div class="selectedNumber">
-					<div><span id="numberX"></span> gods selected</div>
-					<label>All<input type="checkbox" checked onchange="toggleAllGods(this)" id="selectAllCbx"></label>
+		<aside>
+			<h2>Filters</h2>
+			<div id="filter" class="scroll filter-container">
+				<div class="filterGroups">
+					<label><h3>Class</h3>		
+						<input class="class father" type="checkbox">
+					</label>
+					<label><span>Hunter</span>	<input class="class child" type="checkbox" id="Hunter"></label>
+					<label><span>Guardian</span><input class="class child" type="checkbox" id="Guardian"></label>
+					<label><span>Mage</span>	<input class="class child" type="checkbox" id="Mage"></label>
+					<label><span>Assassin</span><input class="class child" type="checkbox" id="Assassin"></label>
+					<label><span>Warrior</span>	<input class="class child" type="checkbox" id="Warrior"></label>
+				</div>				
+				<div class="filterGroups">
+					<label><h3>Roles</h3>		
+						<input class="roles father" type="checkbox">
+					</label>
+					<label><span>ADC</span>		<input class="roles child" type="checkbox" id="ADC"></label>
+					<label><span>Support</span>	<input class="roles child" type="checkbox" id="Support"></label>
+					<label><span>Mid</span>		<input class="roles child" type="checkbox" id="Mid"></label>
+					<label><span>Jungle</span>	<input class="roles child" type="checkbox" id="Jungle"></label>
+					<label><span>Solo</span>	<input class="roles child" type="checkbox" id="Solo"></label>
 				</div>
+				<div class="filterGroups">
+					<label><h3>Type</h3>		
+						<input class="type father" type="checkbox">
+					</label>
+					<label><span>Physical</span><input class="type damage_type child" type="checkbox" id="Physical"></label>
+					<label><span>Magical</span>	<input class="type damage_type child" type="checkbox" id="Magical"></label>
+					<label><span>Melee</span>	<input class="type attack_type child" type="checkbox" id="Melee"></label>
+					<label><span>Ranged</span>	<input class="type attack_type child" type="checkbox" id="Ranged"></label>
+				</div>
+				<div class="filterGroups">
+					<label><h3>Features</h3>				
+						<input class="features father" type="checkbox">
+					</label>
+					<label><span>Healer</span>			<input class="features child" type="checkbox" id="Healer"></label>
+					<label><span>Escape/Engage</span>	<input class="features child" type="checkbox" id="Escape-Engage"></label>
+					<label><span>Global Ult</span>		<input class="features child" type="checkbox" id="Global-Ult"></label>
+					<label><span>Invisible</span>		<input class="features child" type="checkbox" id="Invisible"></label>
+					<label><span>Execute</span>			<input class="features child" type="checkbox" id="Execute"></label>
+					<label><span>Stance-Switching</span><input class="features child" type="checkbox" id="Stance-Switching"></label>
+				</div> 
+				<div class="filterGroups">
+					<label><h3>Pantheon</h3>	
+						<input class="pantheon father" type="checkbox">
+					</label>
+					<label><span>Celtic</span>	<input class="pantheon child" type="checkbox" id="Celtic"></label>
+					<label><span>Chinese</span>	<input class="pantheon child" type="checkbox" id="Chinese"></label>
+					<label><span>Egyptian</span><input class="pantheon child" type="checkbox" id="Egyptian"></label>
+					<label><span>Greek</span>	<input class="pantheon child" type="checkbox" id="Greek"></label>
+					<label><span>Hindu</span>	<input class="pantheon child" type="checkbox" id="Hindu"></label>
+					<label><span>Japanese</span><input class="pantheon child" type="checkbox" id="Japanese"></label>
+					<label><span>Mayan</span>	<input class="pantheon child" type="checkbox" id="Mayan"></label>
+					<label><span>Norse</span>	<input class="pantheon child" type="checkbox" id="Norse"></label>
+					<label><span>Roman</span>	<input class="pantheon child" type="checkbox" id="Roman"></label>
+					<label><span>Slavic</span>	<input class="pantheon child" type="checkbox" id="Slavic"></label>
+					<label><span>Voodoo</span>	<input class="pantheon child" type="checkbox" id="Voodoo"></label>
+				</div>
+		</div>	
+		</aside>
+		
+		<section>
+			<div class="selectedNumber">
+				<div><span id="numberX"></span> gods selected</div>
+				<label>All<input type="checkbox" checked onchange="toggleAllGods(this)" id="selectAllCbx"></label>
+			</div>
 
-				<div id="godList" class="scroll"></div>
-			</section>
+			<div id="godList" class="scroll"></div>
+		</section>
 
-			<div class="btnRoll" onclick="roll()">roll</div>
-		</div>
+		<div class="btnRoll" onclick="roll()">roll</div>
+
 		<h1 class="outdated">Please, update your browser</h1>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <!-- <script src="scripts/jquery.min.js"></script> -->
