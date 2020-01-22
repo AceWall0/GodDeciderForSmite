@@ -1,11 +1,9 @@
-import gods from './gods.js'
-
 const filterGroups = ['class', 'pantheon', 'damage_type', 'attack_type', 'roles']
 const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switching']
 const godIds = Object.keys(gods)
 let selectedGods = godIds
 
-$('#godList').ready(timeIt(loadGods))
+$('#godList').ready(loadGods)
 $(document).ready(main)
 
 
