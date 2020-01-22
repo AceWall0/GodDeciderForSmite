@@ -1,9 +1,11 @@
+import gods from './gods.js'
+
 const filterGroups = ['class', 'pantheon', 'damage_type', 'attack_type', 'roles']
 const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switching']
 const godIds = Object.keys(gods)
 let selectedGods = godIds
 
-$('#godList').ready(loadGods)
+$('#godList').ready(timeIt(loadGods))
 $(document).ready(main)
 
 
@@ -89,22 +91,23 @@ function filterByFeature(fName) {
  * binding them events and defining if the god is selected individually or if it is hidden by the filters.
  */
 function loadGods() {
-    let container = document.getElementById('godList')
+    const container = document.getElementById('godList')
     container.innerHTML = ''
-    for (let key in gods) {
-        let figure = document.createElement('figure')
-        figure.id = gods[key].id
-        figure.classList.add('godFigure')
+    
+    for (const key in gods) {
+        const figure = document.createElement('figure')
+        figure.id = key
+        figure.className = 'godFigure'
 
-        let img = document.createElement('img')
-        img.src = `images/t_${gods[key].id}_default_icon.png`
-        img.classList.add('godImg')
+        const img = document.createElement('img')
+        img.src = `images/t_${key}_default_icon.png`
+        img.className = 'godImg'
 
         figure.appendChild(img)
+        container.appendChild(figure)
         gods[key].HTMLElement = figure
         gods[key].visible = true
         gods[key].selected = true
-        container.appendChild(figure)
     }
 }
 
@@ -223,4 +226,16 @@ function cbxGroupHandler(x) {
             a.indeterminate = true
         }
     }
+}
+
+
+/**
+ * Times a function. Used for debugging.
+ * @param {function} callback 
+ */
+function timeIt(callback) {
+    const name = callback.name
+    console.time(name)
+    callback()
+    console.timeEnd(name)
 }

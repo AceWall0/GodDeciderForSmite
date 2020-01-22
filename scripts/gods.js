@@ -1,4 +1,4 @@
-const gods = {
+export default {
 	"achilles": {
 		"name": "Achilles",
 		"id": "achilles",
