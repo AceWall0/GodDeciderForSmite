@@ -3,16 +3,18 @@ const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', '
 const godIds = Object.keys(gods)
 let selectedGods = godIds
 
-$('#godList').ready(loadGods)
-$(document).ready(main)
-
 
 function main() {
-    $('input[type=checkbox]').change(function(){cbxGroupHandler(this)}) // Set up the checkbox groupers.
-    $('.godFigure').click(function(){toggleGod(this)})                  // Makes the gods toggleable.
-    
+    loadGods()
     updateSelectedGodsList()
-    $('input[type=checkbox]').change(applyFilters)
+
+    document.querySelectorAll('.filter').forEach(e => {
+        e.addEventListener('change', event => cbxGroupHandler(event.target))
+        e.addEventListener('change', applyFilters)
+    })
+    document.querySelectorAll('.godFigure').forEach(
+        e => e.addEventListener('click', event => toggleGod(event.currentTarget))
+    )    
 }
 
 
@@ -42,7 +44,8 @@ function applyFilters() {
  * @param {string} gName Name of the filter group
  */
 function filterByGroup(gName) {
-    let cbxListFromGroup = $(`.${gName}.child`).get()    
+    let cbxListFromGroup = document.querySelectorAll(`.${gName}.child`)
+      
     let cbxSelecteds = []
     for (let cbx of cbxListFromGroup) {
         if (cbx.checked) {
@@ -69,7 +72,7 @@ function filterByGroup(gName) {
 
 
 /**
- * To a god be elegible to be displayed and rolled, it has to have ALL the features checked.
+ * Filter gods by its features. This filter, as opposed to the others, uses the AND strategy.
  * @param {string} fName The name of the feature.
  */
 function filterByFeature(fName) {
@@ -115,11 +118,12 @@ function loadGods() {
  * description of the god selected.
  */
 function roll() {
-    let x = Math.floor(Math.random() * selectedGods.length)
-    let id = selectedGods[x]
-	$('#godName').text(gods[id].name)
-	$('#godDescription').text(`${gods[id].pantheon} ${gods[id].class}`)
-    $('#icoBorder').css('background-image', `url("images/t_${id}_default_icon.png")`)
+    const x = Math.floor(Math.random() * selectedGods.length)
+    const id = selectedGods[x]
+    const god = gods[id]
+    document.getElementById('godName').innerHTML = god.name
+    document.getElementById('godDescription').innerHTML = `${god.pantheon} ${god.class}`
+    document.getElementById('icoBorder').style.backgroundImage = `url("images/t_${id}_default_icon.png")`
 }
 
 
@@ -224,16 +228,4 @@ function cbxGroupHandler(x) {
             a.indeterminate = true
         }
     }
-}
-
-
-/**
- * Times a function. Used for debugging.
- * @param {function} callback 
- */
-function timeIt(callback) {
-    const name = callback.name
-    console.time(name)
-    callback()
-    console.timeEnd(name)
 }
