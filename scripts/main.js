@@ -124,6 +124,7 @@ function roll() {
     document.getElementById('godName').innerHTML = god.name
     document.getElementById('godDescription').innerHTML = `${god.pantheon} ${god.class}`
     document.getElementById('icoFrame').style.backgroundImage = `url("images/t_${id}_default_icon.png")`
+    window.rGod = god
 }
 
 
