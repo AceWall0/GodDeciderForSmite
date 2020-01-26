@@ -219,7 +219,7 @@ const gods = {
 		],
 		"features": [
 			"Healer",
-			"Stance-Switching",
+			"Stance-Switcher",
 			"Escape-Engage"
 		]
 	},
@@ -734,7 +734,7 @@ const gods = {
 		],
 		"features": [
 			"Healer",
-			"Stance-Switching"
+			"Stance-Switcher"
 		]
 	},
 	"hercules": {
@@ -1438,7 +1438,7 @@ const gods = {
 		],
 		"features": [
 			"Escape-Engage",
-			"Stance-Switching"
+			"Stance-Switcher"
 		]
 	},
 	"ullr": {
@@ -1456,7 +1456,7 @@ const gods = {
 		],
 		"features": [
 			"Escape-Engage",
-			"Stance-Switching"
+			"Stance-Switcher"
 		]
 	},
 	"vamana": {

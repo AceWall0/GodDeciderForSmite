@@ -1,7 +1,8 @@
 const filterGroups = ['class', 'pantheon', 'damage_type', 'attack_type', 'roles']
-const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switching']
+const specialFeatures = ['Healer', 'Escape-Engage', 'Global-Ult', 'Invisible', 'Execute', 'Stance-Switcher']
 const godIds = Object.keys(gods)
-let selectedGods = godIds
+
+var selectedGods = godIds
 
 
 function main() {
@@ -14,7 +15,7 @@ function main() {
     })
     document.querySelectorAll('.godFigure').forEach(
         e => e.addEventListener('click', event => toggleGod(event.currentTarget))
-    )    
+    )
 }
 
 
@@ -22,10 +23,10 @@ function main() {
  * Look for any filter that are checked and apply them, making the gods hidden or unhidden.
  */
 function applyFilters() {
-    for (let key in gods) {gods[key].visible = true}
+    for (let key in gods) { gods[key].visible = true }
 
-    for (let group of filterGroups) {filterByGroup(group)}
-    for (let feature of specialFeatures) {filterByFeature(feature)}
+    for (let group of filterGroups) { filterByGroup(group) }
+    for (let feature of specialFeatures) { filterByFeature(feature) }
 
     for (let key in gods) {
         if (gods[key].visible) {
@@ -45,7 +46,7 @@ function applyFilters() {
  */
 function filterByGroup(gName) {
     let cbxListFromGroup = document.querySelectorAll(`.${gName}.child`)
-      
+
     let cbxSelecteds = []
     for (let cbx of cbxListFromGroup) {
         if (cbx.checked) {
@@ -94,7 +95,7 @@ function filterByFeature(fName) {
 function loadGods() {
     const container = document.getElementById('godList')
     container.innerHTML = ''
-    
+
     for (const key in gods) {
         const figure = document.createElement('figure')
         figure.id = key
@@ -132,9 +133,9 @@ function roll() {
  * Toggles the visibility of the filters panel.
  */
 function toggleAside() {
-	let x = document.getElementsByTagName('body')[0].classList
-	x.toggle('closed-aside')
-	x.toggle('open-aside')
+    let x = document.getElementsByTagName('body')[0].classList
+    x.toggle('closed-aside')
+    x.toggle('open-aside')
 }
 
 
@@ -146,13 +147,13 @@ function toggleGod(god) {
     let off = god.classList.toggle('deselected')
     gods[god.id].selected = !off
     updateSelectedGodsList()
-    
+
     // Updates the state of the "All" checkbox.
     let count = 0
     const godList = Object.values(gods)
     const cbx = document.getElementById('selectAllCbx')
 
-    godList.forEach(e => {if (e.selected) count++});
+    godList.forEach(e => { if (e.selected) count++ });
     if (count === godList.length) {
         cbx.checked = true
         cbx.indeterminate = false
@@ -204,7 +205,7 @@ function updateSelectedGodsList() {
 function cbxGroupHandler(x) {
     let list = x.classList
     let groupName = list[0]
-    
+
     if (list.contains('father')) {
         let children = document.getElementsByClassName(groupName + ' child')
         for (let i = children.length - 1; i >= 0; i--) {
@@ -215,7 +216,7 @@ function cbxGroupHandler(x) {
         let totalNum = document.getElementsByClassName(groupName + ' child').length
         let selNum = document.querySelectorAll(`.${groupName}.child:checked`).length
         let a = document.querySelector(`.${groupName}.father`)
-        
+
         if (selNum === 0) {
             a.checked = false
             a.indeterminate = false
@@ -225,7 +226,7 @@ function cbxGroupHandler(x) {
             a.indeterminate = false
         }
         else {
-            a.checked = false 
+            a.checked = false
             a.indeterminate = true
         }
     }
