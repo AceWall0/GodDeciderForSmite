@@ -115,7 +115,7 @@ header, section, aside, .btnRoll {
     align-items: center;
   }
   aside span {
-    padding-left: 0.4rem;
+    padding-left: 0.4em;
     font-size: 0.9em;
   }
   aside h2 {
@@ -131,7 +131,7 @@ header, section, aside, .btnRoll {
     box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.2) inset;
   }
   .filter-group {
-    margin: 0 0 1rem 0;
+    margin-bottom: 1em;
     padding: 0.3rem;
     border: rgba(255, 255, 255, 0.1) 1px solid;
   }
@@ -145,13 +145,13 @@ header, section, aside, .btnRoll {
   section {
     grid-row: 2 / -1;
     grid-column: 2 / -1;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    padding: 0.5rem;
     min-height: 0;
     display: grid;
     grid-template-rows: auto 1fr;
   }
   .selectedNumber {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.1em;
     display: grid;
     grid-template-rows: 1.2em 1.2em;
   }
@@ -208,7 +208,7 @@ header, section, aside, .btnRoll {
     justify-self: center;
     z-index: 1;
     width: 100%;
-    height: 2.5rem;
+    height: 1.78em;
     background-image: url("../images/button_normal.png");
     background-size: 100% 100%;
     display: flex;
@@ -262,7 +262,7 @@ header, section, aside, .btnRoll {
     box-shadow: 0 0 5px #4b7bff;
     border-radius: 50%;
   }
-  @media (max-width: 21.25rem) {
+  @media (max-width: 340px) {
     .open-aside header {
       grid-template-rows: min-content 3rem 2rem 2rem;
     }
