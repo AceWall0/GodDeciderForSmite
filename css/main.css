@@ -202,7 +202,7 @@ header, section, aside, .btnRoll {
   .hidden {
     display: none;
   }
-  .btnRoll {
+  #btnRoll {
     grid-row: 3;
     grid-column: 3;
     justify-self: center;
@@ -217,7 +217,7 @@ header, section, aside, .btnRoll {
     font-variant: small-caps;
     font-size: 1.4rem;
   }
-  .btnRoll:active {
+  #btnRoll:active {
     background-image: url("../images/button_pressed.png");
   }
   /*--------------- closed aside --------------*/

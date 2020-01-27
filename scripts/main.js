@@ -9,6 +9,9 @@ function main() {
     loadGods()
     updateSelectedGodsList()
 
+    document.getElementById('btnRoll').addEventListener('pointerdown', rollDown)
+    document.getElementById('btnRoll').addEventListener('pointerup', rollUp)
+
     document.querySelectorAll('.filter').forEach(e => {
         e.addEventListener('change', event => cbxGroupHandler(event.target))
         e.addEventListener('change', applyFilters)
@@ -110,6 +113,20 @@ function loadGods() {
         gods[key].HTMLElement = figure
         gods[key].visible = true
         gods[key].selected = true
+    }
+}
+
+var pointerDown = false
+function rollDown() {
+    roll()
+    if (pointerDown === false) {
+        pointerDown = setInterval(roll, 70)
+    }
+}
+function rollUp() {
+    if (pointerDown !== false) {
+        clearInterval(pointerDown)
+        pointerDown = false
     }
 }
 
