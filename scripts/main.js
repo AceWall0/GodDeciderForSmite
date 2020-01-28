@@ -9,8 +9,11 @@ function main() {
     loadGods()
     updateSelectedGodsList()
 
+    document.addEventListener('touchstart', touchStartHandler)
+    document.addEventListener('touchend', touchEndHandler)
     document.getElementById('btnRoll').addEventListener('pointerdown', rollDown)
-    document.getElementById('btnRoll').addEventListener('pointerup', rollUp)
+    document.addEventListener('pointerup', rollUp)
+    document.addEventListener('touchend', rollUp)
 
     document.querySelectorAll('.filter').forEach(e => {
         e.addEventListener('change', event => cbxGroupHandler(event.target))
@@ -116,18 +119,21 @@ function loadGods() {
     }
 }
 
-var pointerDown = false
-function rollDown() {
+
+
+var rollIntervalId, rollDown
+async function rollDown() {
+    rollDown = true
     roll()
-    if (pointerDown === false) {
-        pointerDown = setInterval(roll, 70)
+    await sleep(500)
+    if (rollDown && !rollIntervalId) {
+        rollIntervalId = setInterval(roll, 70)
     }
 }
 function rollUp() {
-    if (pointerDown !== false) {
-        clearInterval(pointerDown)
-        pointerDown = false
-    }
+    clearInterval(rollIntervalId)
+    rollIntervalId = null
+    rollDown = false
 }
 
 
@@ -150,9 +156,33 @@ function roll() {
  * Toggles the visibility of the filters panel.
  */
 function toggleAside() {
-    let x = document.getElementsByTagName('body')[0].classList
-    x.toggle('closed-aside')
-    x.toggle('open-aside')
+    document.body.toggleAttribute('aside_closed')
+}
+
+
+/**
+ * @type {Touch} touchStart, touchEnd
+ */
+var touchStart
+var touchEnd
+
+/** @param {TouchEvent} event */
+function touchStartHandler(event) {
+    touchStart = event.changedTouches[0]
+}
+
+/** @param {TouchEvent} event */
+function touchEndHandler(event) {
+    touchEnd = event.changedTouches[0]
+
+    let threshold = 100
+    let dX = touchEnd.screenX - touchStart.screenX
+    let dY = touchEnd.screenY - touchStart.screenY
+
+    if (Math.abs(dX) > Math.abs(dY)) {
+        if (!document.body.hasAttribute('aside_closed') && dX < -threshold) toggleAside()
+        else if (document.body.hasAttribute('aside_closed') && dX > threshold) toggleAside()
+    }
 }
 
 
@@ -247,4 +277,8 @@ function cbxGroupHandler(x) {
             a.indeterminate = true
         }
     }
+}
+
+function sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time))
 }

@@ -16,7 +16,7 @@ describe('Roll button:', () => {
     let god;
 
     beforeAll(async () => {
-        await page.click('.btnRoll')
+        await page.click('#btnRoll')
         god = await page.evaluate(() => window.rGod)
     })
 

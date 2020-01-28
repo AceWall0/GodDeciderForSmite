@@ -34,6 +34,9 @@ header, section, aside, .btnRoll {
   * {
     user-select: none;
   }
+  label, svg, #btnRoll, input {
+    cursor: pointer;
+  }
   body {
     display: grid;
     grid-template-columns: auto minmax(1rem, 1fr) minmax(0rem, 9rem) minmax(1rem, 1fr);
@@ -221,13 +224,13 @@ header, section, aside, .btnRoll {
     background-image: url("../images/button_pressed.png");
   }
   /*--------------- closed aside --------------*/
-  .closed-aside {
+  body[aside_closed] {
     grid-column-gap: 0;
   }
-  .closed-aside aside {
+  body[aside_closed] aside {
     display: none;
   }
-  .closed-aside #godList {
+  body[aside_closed] #godList {
     grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
   }
   /*------------------------ Controllers -------------------------- */

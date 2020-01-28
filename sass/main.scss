@@ -36,6 +36,10 @@ header, section, aside, .btnRoll {
 		// box-sizing: border-box;
 		user-select: none;
 	}
+	label, svg, #btnRoll, input {
+		cursor: pointer;
+	}
+
 	body {
 		display: grid;
 		grid-template-columns: auto minmax(1rem, 1fr) minmax(0rem, 9rem) minmax(1rem, 1fr);
@@ -264,7 +268,7 @@ header, section, aside, .btnRoll {
 	}
 
 	/*--------------- closed aside --------------*/
-	.closed-aside {
+	body[aside_closed] {
 		grid-column-gap: 0;
 		aside {
 			display: none;
