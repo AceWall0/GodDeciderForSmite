@@ -176,7 +176,7 @@ header, section, aside, .btnRoll {
 		display: grid;
 		grid-template-rows: auto 1fr;
 	}
-	.selectedNumber {
+	.god_count {
 		margin-bottom: 0.1em;
 		display: grid;
 		grid-template-rows: 1.2em 1.2em;
@@ -268,7 +268,7 @@ header, section, aside, .btnRoll {
 	}
 
 	/*--------------- closed aside --------------*/
-	body[aside_closed] {
+	.aside_closed {
 		grid-column-gap: 0;
 		aside {
 			display: none;
@@ -304,7 +304,6 @@ header, section, aside, .btnRoll {
 		}
 	}
 	.scroll {
-		// scrollbar-width: thin;
 		&::-webkit-scrollbar {
 			width: 2px;
 		}
@@ -318,7 +317,8 @@ header, section, aside, .btnRoll {
 
 
 	@media (max-width: 340px) {
-		.open-aside {
+		
+		.aside_expanded {
 			header {
 				grid-template-rows: min-content 3rem 2rem 2rem;
 			}
@@ -334,10 +334,10 @@ header, section, aside, .btnRoll {
 			}
 			#godName {font-size: 1rem;}
 			#godDescription {font-size: 0.9rem;}
-		}
 
-		.open-aside .selectedNumber {
-			font-size: 0.8rem;
+			.god_count {
+				font-size: 0.8rem;
+			}
 		}
 	}
 }

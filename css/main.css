@@ -153,15 +153,15 @@ header, section, aside, .btnRoll {
     display: grid;
     grid-template-rows: auto 1fr;
   }
-  .selectedNumber {
+  .god_count {
     margin-bottom: 0.1em;
     display: grid;
     grid-template-rows: 1.2em 1.2em;
   }
-  .selectedNumber div {
+  .god_count div {
     justify-self: center;
   }
-  .selectedNumber label {
+  .god_count label {
     justify-self: end;
     display: flex;
     align-items: center;
@@ -224,13 +224,13 @@ header, section, aside, .btnRoll {
     background-image: url("../images/button_pressed.png");
   }
   /*--------------- closed aside --------------*/
-  body[aside_closed] {
+  .aside_closed {
     grid-column-gap: 0;
   }
-  body[aside_closed] aside {
+  .aside_closed aside {
     display: none;
   }
-  body[aside_closed] #godList {
+  .aside_closed #godList {
     grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
   }
   /*------------------------ Controllers -------------------------- */
@@ -266,24 +266,24 @@ header, section, aside, .btnRoll {
     border-radius: 50%;
   }
   @media (max-width: 340px) {
-    .open-aside header {
+    .aside_expanded header {
       grid-template-rows: min-content 3rem 2rem 2rem;
     }
-    .open-aside #icoFrame {
+    .aside_expanded #icoFrame {
       justify-self: right;
       grid-row: 1 / span 2;
       grid-column: span 2 / -1;
     }
-    .open-aside #godName, .open-aside #godDescription, .open-aside .line {
+    .aside_expanded #godName, .aside_expanded #godDescription, .aside_expanded .line {
       justify-self: start;
     }
-    .open-aside #godName {
+    .aside_expanded #godName {
       font-size: 1rem;
     }
-    .open-aside #godDescription {
+    .aside_expanded #godDescription {
       font-size: 0.9rem;
     }
-    .open-aside .selectedNumber {
+    .aside_expanded .god_count {
       font-size: 0.8rem;
     }
   }

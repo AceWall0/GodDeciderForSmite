@@ -156,7 +156,9 @@ function roll() {
  * Toggles the visibility of the filters panel.
  */
 function toggleAside() {
-    document.body.toggleAttribute('aside_closed')
+    let mc = document.querySelector('.main_content')
+    mc.classList.toggle('aside_expanded')
+    mc.classList.toggle('aside_closed')
 }
 
 
@@ -180,8 +182,11 @@ function touchEndHandler(event) {
     let dY = touchEnd.screenY - touchStart.screenY
 
     if (Math.abs(dX) > Math.abs(dY)) {
-        if (!document.body.hasAttribute('aside_closed') && dX < -threshold) toggleAside()
-        else if (document.body.hasAttribute('aside_closed') && dX > threshold) toggleAside()
+        let mc = document.querySelector('.main_content')
+        if ((mc.classList.contains('aside_closed') && dX > threshold) ||
+            (mc.classList.contains('aside_expanded') && dX < -threshold)) {
+            toggleAside()
+        }
     }
 }
 
