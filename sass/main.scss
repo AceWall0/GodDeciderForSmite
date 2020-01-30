@@ -22,15 +22,13 @@ body {
 	text-align: center;
 }
 
-header, section, aside, .btnRoll {
+.main_content {
 	display: none
 }
 
 @supports (display: grid) {
 	.fallback {display: none;}
-	header, section, aside, .btnRoll {
-		display: initial
-	}
+	.main_content {display: initial}
 
 	* {
 		// box-sizing: border-box;
@@ -40,7 +38,8 @@ header, section, aside, .btnRoll {
 		cursor: pointer;
 	}
 
-	body {
+	.main_content {
+		height: 100%;
 		display: grid;
 		grid-template-columns: auto minmax(1rem, 1fr) minmax(0rem, 9rem) minmax(1rem, 1fr);
 		grid-template-rows: auto 1fr 4.5rem;

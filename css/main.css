@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 
-header, section, aside, .btnRoll {
+.main_content {
   display: none;
 }
 
@@ -28,7 +28,7 @@ header, section, aside, .btnRoll {
   .fallback {
     display: none;
   }
-  header, section, aside, .btnRoll {
+  .main_content {
     display: initial;
   }
   * {
@@ -37,7 +37,8 @@ header, section, aside, .btnRoll {
   label, svg, #btnRoll, input {
     cursor: pointer;
   }
-  body {
+  .main_content {
+    height: 100%;
     display: grid;
     grid-template-columns: auto minmax(1rem, 1fr) minmax(0rem, 9rem) minmax(1rem, 1fr);
     grid-template-rows: auto 1fr 4.5rem;
@@ -45,7 +46,7 @@ header, section, aside, .btnRoll {
     position: relative;
     overflow: hidden;
   }
-  body > * {
+  .main_content > * {
     background: var(--primaryColor);
   }
   /*================= Header =================*/
