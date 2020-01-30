@@ -157,8 +157,19 @@ function roll() {
  */
 function toggleAside() {
     let mc = document.querySelector('.main_content')
-    mc.classList.toggle('aside_expanded')
-    mc.classList.toggle('aside_closed')
+    let aside = document.querySelector('aside')
+
+    aside.classList.toggle('slide-out')
+
+    if (mc.classList.contains('aside_expanded')) {
+        setTimeout(() => {
+            mc.classList.toggle('aside_expanded')
+            mc.classList.toggle('aside_closed')
+        }, 400)
+    } else {
+        mc.classList.toggle('aside_expanded')
+        mc.classList.toggle('aside_closed')
+    }
 }
 
 
@@ -177,7 +188,7 @@ function touchStartHandler(event) {
 function touchEndHandler(event) {
     touchEnd = event.changedTouches[0]
 
-    let threshold = 100
+    let threshold = 70
     let dX = touchEnd.screenX - touchStart.screenX
     let dY = touchEnd.screenY - touchStart.screenY
 

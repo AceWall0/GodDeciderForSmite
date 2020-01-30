@@ -31,7 +31,10 @@ body {
 	.main_content {display: initial}
 
 	* {user-select: none; }
-	label, svg, #btnRoll, input { cursor: pointer;}
+	label, svg, #btnRoll, input { 
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
 
 	.main_content {
 		height: 100%;
@@ -116,6 +119,8 @@ body {
 		padding: 0.5rem 0 0.5rem 0.5rem;
 		display: flex;
 		flex-flow: column;
+		transform: translateX(0%);
+		transition: transform 500ms 0s;
 
 		h3 {
 			margin: 0;
@@ -254,7 +259,6 @@ body {
 		height: 1.78em;
 		background-image: url("../images/button_normal.png");
 		background-size: 100% 100%;
-		-webkit-tap-highlight-color: transparent;
 
 		display: flex;
 		align-items: center;
@@ -268,10 +272,13 @@ body {
 	}
 
 	/*--------------- closed aside --------------*/
+	.slide-out {
+		transform: translateX(-101%);
+	}
 	.aside_closed {
-		grid-column-gap: 0;
+		column-gap: 0;
 		aside {
-			display: none;
+			position: absolute;;
 		}
 		#godList {
 			grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
