@@ -19,7 +19,7 @@ function main() {
         e.addEventListener('change', event => cbxGroupHandler(event.target))
         e.addEventListener('change', applyFilters)
     })
-    document.querySelectorAll('.godFigure').forEach(
+    document.querySelectorAll('.god_figure').forEach(
         e => e.addEventListener('click', event => toggleGod(event.currentTarget))
     )
 }
@@ -105,11 +105,11 @@ function loadGods() {
     for (const key in gods) {
         const figure = document.createElement('figure')
         figure.id = key
-        figure.className = 'godFigure'
+        figure.className = 'god_figure'
 
         const img = document.createElement('img')
         img.src = `images/t_${key}_default_icon.png`
-        img.className = 'godImg'
+        img.className = 'god_img'
 
         figure.appendChild(img)
         container.appendChild(figure)
@@ -146,7 +146,7 @@ function roll() {
     const id = selectedGods[x]
     const god = gods[id]
     document.getElementById('godName').innerHTML = god.name
-    document.getElementById('godDescription').innerHTML = `${god.pantheon} ${god.class}`
+    document.getElementById('godDesc').innerHTML = `${god.pantheon} ${god.class}`
     document.getElementById('icoFrame').style.backgroundImage = `url("images/t_${id}_default_icon.png")`
     window.rGod = god
 }
@@ -155,20 +155,23 @@ function roll() {
 /**
  * Toggles the visibility of the filters panel.
  */
-function toggleAside() {
+async function toggleAside() {
     let mc = document.querySelector('.main_content')
     let aside = document.querySelector('aside')
 
-    aside.classList.toggle('slide-out')
-
-    if (mc.classList.contains('aside_expanded')) {
+    if (mc.classList.contains('filter-show')) {
+        aside.classList.toggle('slide-out')
         setTimeout(() => {
-            mc.classList.toggle('aside_expanded')
-            mc.classList.toggle('aside_closed')
+            mc.classList.toggle('filter-show')
+            mc.classList.toggle('filter-hide')
         }, 400)
-    } else {
-        mc.classList.toggle('aside_expanded')
-        mc.classList.toggle('aside_closed')
+    }
+    else {
+        mc.classList.toggle('filter-show')
+        mc.classList.toggle('filter-hide')
+        setTimeout(() => {
+            aside.classList.toggle('slide-out')
+        }, 200)
     }
 }
 
@@ -194,8 +197,8 @@ function touchEndHandler(event) {
 
     if (Math.abs(dX) > Math.abs(dY)) {
         let mc = document.querySelector('.main_content')
-        if ((mc.classList.contains('aside_closed') && dX > threshold) ||
-            (mc.classList.contains('aside_expanded') && dX < -threshold)) {
+        if ((mc.classList.contains('filter-hide') && dX > threshold) ||
+            (mc.classList.contains('filter-show') && dX < -threshold)) {
             toggleAside()
         }
     }

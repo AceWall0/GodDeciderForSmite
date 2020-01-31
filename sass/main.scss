@@ -70,9 +70,7 @@ body {
 		grid-column: 2;
 		height: 100%;
 		justify-self: center;
-
 		object-fit: cover;
-
 		background-image: url("../images/default_icon.png");
 		background-size: 90% 90%;
 		background-position: center;
@@ -102,7 +100,7 @@ body {
 		z-index: 2;
 	}
 
-	#godDescription {
+	#godDesc {
 		grid-row: 4;
 		grid-column: 1 / -1;
 		align-self: start;
@@ -200,10 +198,11 @@ body {
 		overflow-y: scroll;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(3.5rem, 1fr));
+		grid-auto-rows: min-content;
 		align-items: start;
 	}
 
-	.godFigure {
+	.god_figure {
 		position: relative;
 		margin: 0;
 
@@ -232,7 +231,7 @@ body {
 			}
 		}
 	}
-	.godImg {
+	.god_img {
 		display: block;
 		width: 100%;
 		z-index: -1;
@@ -275,7 +274,7 @@ body {
 	.slide-out {
 		transform: translateX(-101%);
 	}
-	.aside_closed {
+	.filter-hide {
 		column-gap: 0;
 		aside {
 			position: absolute;;
@@ -325,7 +324,7 @@ body {
 
 	@media (max-width: 340px) {
 		
-		.aside_expanded {
+		.filter-show {
 			header {
 				grid-template-rows: min-content 3rem 2rem 2rem;
 			}
@@ -336,11 +335,11 @@ body {
 				grid-column: span 2 / -1;
 			}
 
-			#godName, #godDescription, .line {
+			#godName, #godDesc, .line {
 				justify-self: start;
 			}
 			#godName {font-size: 1rem;}
-			#godDescription {font-size: 0.9rem;}
+			#godDesc {font-size: 0.9rem;}
 
 			.god_count {
 				font-size: 0.8rem;

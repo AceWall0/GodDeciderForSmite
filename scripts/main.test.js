@@ -27,7 +27,7 @@ describe('Roll button:', () => {
     test('Drawn god is shown', async () => {
         await expect(page.$eval('#icoFrame', x => x.style.backgroundImage)).resolves.toMatch(god.id)
         await expect(page.$eval('#godName', x => x.innerHTML)).resolves.toMatch(god.name)
-        await expect(page.$eval('#godDescription', x => x.innerHTML)).resolves.toMatch(`${god.pantheon} ${god.class}`)
+        await expect(page.$eval('#godDesc', x => x.innerHTML)).resolves.toMatch(`${god.pantheon} ${god.class}`)
     })
 })
 
