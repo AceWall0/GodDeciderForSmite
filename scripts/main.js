@@ -9,11 +9,13 @@ function main() {
     loadGods()
     updateSelectedGodsList()
 
-    document.addEventListener('touchstart', touchStartHandler)
-    document.addEventListener('touchend', touchEndHandler)
-    document.getElementById('btnRoll').addEventListener('pointerdown', rollDown)
-    document.addEventListener('pointerup', rollUp)
-    document.addEventListener('touchend', rollUp)
+    document.addEventListener('pointerdown', ftrSlider.pointerStart)
+    document.addEventListener('touchend', ftrSlider.touchEnd)
+    document.addEventListener('mouseup', ftrSlider.mouseEnd)
+
+    document.getElementById('btnRoll').addEventListener('pointerdown', rollBtn.down)
+    document.addEventListener('mouseup', rollBtn.up)
+    document.addEventListener('touchend', rollBtn.up)
 
     document.querySelectorAll('.filter').forEach(e => {
         e.addEventListener('change', event => cbxGroupHandler(event.target))
@@ -22,6 +24,83 @@ function main() {
     document.querySelectorAll('.god_figure').forEach(
         e => e.addEventListener('click', event => toggleGod(event.currentTarget))
     )
+}
+
+
+// rollButton Handler
+var rollBtn = {
+    intervalId: null,
+    isDown: false,
+
+    roll: function () {
+        const x = Math.floor(Math.random() * selectedGods.length)
+        const id = selectedGods[x]
+        const god = gods[id]
+        document.getElementById('drawnName').innerHTML = god.name
+        document.getElementById('drawnDesc').innerHTML = `${god.pantheon} ${god.class}`
+        document.getElementById('drawnIco').style.backgroundImage = `url("images/t_${id}_default_icon.png")`
+        window.drawnGod = god
+    },
+
+    /** @param {PointerEvent} event */
+    down: async function (event) {
+        event.stopPropagation()
+        rollBtn.isDown = true
+        rollBtn.roll()
+        await sleep(500)
+        if (rollBtn.isDown && !rollBtn.intervalId) {
+            rollBtn.intervalId = setInterval(rollBtn.roll, 70)
+        }
+    },
+
+    up: function () {
+        clearInterval(rollBtn.intervalId)
+        rollBtn.intervalId = null
+        rollBtn.isDown = false
+    }
+}
+
+
+// FilterSlider
+var ftrSlider = {
+    th: 70,
+    x1: null,
+    y1: null,
+
+    /**@param {PointerEvent} event */
+    pointerStart: function (event) {
+        ftrSlider.x1 = event.screenX
+        ftrSlider.y1 = event.screenY
+    },
+
+    /** @param {MouseEvent} event */
+    mouseEnd: function (event) {
+        console.log('mouse end');
+        const dx = event.screenX - ftrSlider.x1
+        const dy = event.screenY - ftrSlider.y1
+        ftrSlider.handleMove(dx, dy)
+
+        console.log(`[${dx}, ${dy}]`)
+    },
+
+    /** @param {TouchEvent} event */
+    touchEnd: function (event) {
+        console.log('touch end');
+        const dx = event.changedTouches[0].screenX - ftrSlider.x1
+        const dy = event.changedTouches[0].screenY - ftrSlider.y1
+        ftrSlider.handleMove(dx, dy)
+        // event.preventDefault()
+    },
+
+    handleMove: function (dx, dy) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+            let mc = document.querySelector('.main_content')
+            if ((mc.classList.contains('filter-hide') && dx > ftrSlider.th) ||
+                (mc.classList.contains('filter-show') && dx < -ftrSlider.th)) {
+                toggleAside()
+            }
+        }
+    }
 }
 
 
@@ -120,38 +199,6 @@ function loadGods() {
 }
 
 
-
-var rollIntervalId, rollDown
-async function rollDown() {
-    rollDown = true
-    roll()
-    await sleep(500)
-    if (rollDown && !rollIntervalId) {
-        rollIntervalId = setInterval(roll, 70)
-    }
-}
-function rollUp() {
-    clearInterval(rollIntervalId)
-    rollIntervalId = null
-    rollDown = false
-}
-
-
-/**
- * Takes one random god from the selectedGods list and displays to the user the icon, name and
- * description of the god selected.
- */
-function roll() {
-    const x = Math.floor(Math.random() * selectedGods.length)
-    const id = selectedGods[x]
-    const god = gods[id]
-    document.getElementById('godName').innerHTML = god.name
-    document.getElementById('godDesc').innerHTML = `${god.pantheon} ${god.class}`
-    document.getElementById('icoFrame').style.backgroundImage = `url("images/t_${id}_default_icon.png")`
-    window.rGod = god
-}
-
-
 /**
  * Toggles the visibility of the filters panel.
  */
@@ -172,35 +219,6 @@ async function toggleAside() {
         setTimeout(() => {
             aside.classList.toggle('slide-out')
         }, 200)
-    }
-}
-
-
-/**
- * @type {Touch} touchStart, touchEnd
- */
-var touchStart
-var touchEnd
-
-/** @param {TouchEvent} event */
-function touchStartHandler(event) {
-    touchStart = event.changedTouches[0]
-}
-
-/** @param {TouchEvent} event */
-function touchEndHandler(event) {
-    touchEnd = event.changedTouches[0]
-
-    let threshold = 70
-    let dX = touchEnd.screenX - touchStart.screenX
-    let dY = touchEnd.screenY - touchStart.screenY
-
-    if (Math.abs(dX) > Math.abs(dY)) {
-        let mc = document.querySelector('.main_content')
-        if ((mc.classList.contains('filter-hide') && dX > threshold) ||
-            (mc.classList.contains('filter-show') && dX < -threshold)) {
-            toggleAside()
-        }
     }
 }
 

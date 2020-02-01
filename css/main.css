@@ -61,7 +61,7 @@ body {
   svg {
     width: 2rem;
   }
-  #icoFrame {
+  #drawnIco {
     grid-row: 2;
     grid-column: 2;
     height: 100%;
@@ -72,7 +72,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
   }
-  #godName {
+  #drawnName {
     grid-row: 3;
     grid-column: 1 / -1;
     font-weight: bold;
@@ -94,7 +94,7 @@ body {
     box-shadow: 0 0 0.2em rgba(119, 255, 255, 0.5);
     z-index: 2;
   }
-  #godDesc {
+  #drawnDesc {
     grid-row: 4;
     grid-column: 1 / -1;
     align-self: start;
@@ -282,18 +282,18 @@ body {
     .filter-show header {
       grid-template-rows: min-content 3rem 2rem 2rem;
     }
-    .filter-show #icoFrame {
+    .filter-show #drawnIco {
       justify-self: right;
       grid-row: 1 / span 2;
       grid-column: span 2 / -1;
     }
-    .filter-show #godName, .filter-show #godDesc, .filter-show .line {
+    .filter-show #drawnName, .filter-show #drawnDesc, .filter-show .line {
       justify-self: start;
     }
-    .filter-show #godName {
+    .filter-show #drawnName {
       font-size: 1rem;
     }
-    .filter-show #godDesc {
+    .filter-show #drawnDesc {
       font-size: 0.9rem;
     }
     .filter-show .god_count {

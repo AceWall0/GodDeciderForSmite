@@ -17,7 +17,7 @@ describe('Roll button:', () => {
 
     beforeAll(async () => {
         await page.click('#btnRoll')
-        god = await page.evaluate(() => window.rGod)
+        god = await page.evaluate(() => window.drawnGod)
     })
 
     test('God was drawn', async () => {
@@ -25,9 +25,9 @@ describe('Roll button:', () => {
     })
 
     test('Drawn god is shown', async () => {
-        await expect(page.$eval('#icoFrame', x => x.style.backgroundImage)).resolves.toMatch(god.id)
-        await expect(page.$eval('#godName', x => x.innerHTML)).resolves.toMatch(god.name)
-        await expect(page.$eval('#godDesc', x => x.innerHTML)).resolves.toMatch(`${god.pantheon} ${god.class}`)
+        await expect(page.$eval('#drawnIco', x => x.style.backgroundImage)).resolves.toMatch(god.id)
+        await expect(page.$eval('#drawnName', x => x.innerHTML)).resolves.toMatch(god.name)
+        await expect(page.$eval('#drawnDesc', x => x.innerHTML)).resolves.toMatch(`${god.pantheon} ${god.class}`)
     })
 })
 
