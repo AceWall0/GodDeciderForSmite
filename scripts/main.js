@@ -9,13 +9,13 @@ function main() {
     loadGods()
     updateSelectedGodsList()
 
-    document.addEventListener('pointerdown', ftrSlider.pointerStart)
-    document.addEventListener('touchend', ftrSlider.touchEnd)
-    document.addEventListener('mouseup', ftrSlider.mouseEnd)
+    document.addEventListener('pointerdown', ftrSlider.pointerStart.bind(ftrSlider))
+    document.addEventListener('touchend', ftrSlider.touchEnd.bind(ftrSlider))
+    document.addEventListener('mouseup', ftrSlider.mouseEnd.bind(ftrSlider))
 
-    document.getElementById('btnRoll').addEventListener('pointerdown', rollBtn.down)
-    document.addEventListener('mouseup', rollBtn.up)
-    document.addEventListener('touchend', rollBtn.up)
+    document.getElementById('btnRoll').addEventListener('pointerdown', rollBtn.down.bind(rollBtn))
+    document.addEventListener('mouseup', rollBtn.up.bind(rollBtn))
+    document.addEventListener('touchend', rollBtn.up.bind(rollBtn))
 
     document.querySelectorAll('.filter').forEach(e => {
         e.addEventListener('change', event => cbxGroupHandler(event.target))
@@ -29,6 +29,7 @@ function main() {
 
 // rollButton Handler
 var rollBtn = {
+    btnClass: document.getElementById('btnRoll').classList,
     intervalId: null,
     isDown: false,
 
@@ -45,18 +46,20 @@ var rollBtn = {
     /** @param {PointerEvent} event */
     down: async function (event) {
         event.stopPropagation()
-        rollBtn.isDown = true
-        rollBtn.roll()
+        this.btnClass.add('--active')
+        this.isDown = true
+        this.roll()
         await sleep(500)
-        if (rollBtn.isDown && !rollBtn.intervalId) {
-            rollBtn.intervalId = setInterval(rollBtn.roll, 70)
+        if (this.isDown && !this.intervalId) {
+            this.intervalId = setInterval(this.roll, 70)
         }
     },
 
     up: function () {
-        clearInterval(rollBtn.intervalId)
-        rollBtn.intervalId = null
-        rollBtn.isDown = false
+        clearInterval(this.intervalId)
+        this.btnClass.remove('--active')
+        this.intervalId = null
+        this.isDown = false
     }
 }
 
@@ -69,34 +72,30 @@ var ftrSlider = {
 
     /**@param {PointerEvent} event */
     pointerStart: function (event) {
-        ftrSlider.x1 = event.screenX
-        ftrSlider.y1 = event.screenY
+        this.x1 = event.screenX
+        this.y1 = event.screenY
     },
 
     /** @param {MouseEvent} event */
     mouseEnd: function (event) {
-        console.log('mouse end');
-        const dx = event.screenX - ftrSlider.x1
-        const dy = event.screenY - ftrSlider.y1
-        ftrSlider.handleMove(dx, dy)
-
-        console.log(`[${dx}, ${dy}]`)
+        const dx = event.screenX - this.x1
+        const dy = event.screenY - this.y1
+        this.handleMove(dx, dy)
     },
 
     /** @param {TouchEvent} event */
     touchEnd: function (event) {
-        console.log('touch end');
-        const dx = event.changedTouches[0].screenX - ftrSlider.x1
-        const dy = event.changedTouches[0].screenY - ftrSlider.y1
-        ftrSlider.handleMove(dx, dy)
+        const dx = event.changedTouches[0].screenX - this.x1
+        const dy = event.changedTouches[0].screenY - this.y1
+        this.handleMove(dx, dy)
         // event.preventDefault()
     },
 
     handleMove: function (dx, dy) {
         if (Math.abs(dx) > Math.abs(dy)) {
             let mc = document.querySelector('.main_content')
-            if ((mc.classList.contains('filter-hide') && dx > ftrSlider.th) ||
-                (mc.classList.contains('filter-show') && dx < -ftrSlider.th)) {
+            if ((mc.classList.contains('filter-hide') && dx > this.th) ||
+                (mc.classList.contains('filter-show') && dx < -this.th)) {
                 toggleAside()
             }
         }

@@ -265,7 +265,7 @@ body {
 		font-variant: small-caps;
 		font-size: 1.4rem;
 
-		&:active {
+		&.--active {
 			background-image: url("../images/button_pressed.png");
 		}
 	}

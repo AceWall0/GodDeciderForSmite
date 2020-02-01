@@ -230,7 +230,7 @@ body {
     font-variant: small-caps;
     font-size: 1.4rem;
   }
-  #btnRoll:active {
+  #btnRoll.--active {
     background-image: url("../images/button_pressed.png");
   }
   /*--------------- closed aside --------------*/
